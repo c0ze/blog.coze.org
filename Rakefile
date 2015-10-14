@@ -427,6 +427,8 @@ task :s3 do
   end
 
   p "uploading _site"
+
+  `cp ./keybase.txt #{local_dir}`
   traverse_directory(local_dir).flatten.compact.each do |f|
     key = f.gsub(local_dir+"/", "")
     s3.put_object bucket: bucket_name, key: key, body: File.open(f), acl: "public-read"
