@@ -1,0 +1,9 @@
+<div>
+{% for row in page.gallery %}
+  {% for img in row %}
+  <a class="fancybox" href="{{ site.baseurl }}{{ img.url }}" rel="group" title="{{ img.alt }}">
+    <img src="{{ site.baseurl }}{{ img.url }}" alt="{{ img.alt }}">
+  </a>
+  {% endfor %}
+  {% endfor %}
+  </div>
