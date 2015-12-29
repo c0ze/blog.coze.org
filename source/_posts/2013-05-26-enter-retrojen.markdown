@@ -6,8 +6,7 @@ comments: true
 categories: Retro
 ---
 
-Nihayet Retrojen'ime kavuşmuş bulunmaktayım :) Emeği geçen tüm arkadaşlara çok teşekkürler, gerçekten bomba gibi bir sayı olmuş ! Murat Adanç zamanı 64'ler ve Laneth'den sonra ilk defa basılı bir dergiyi okurken bu kadar heyecanlandım diyebilirim. Çıkıp bi Naci den Tiamat'ın
-yeni albümünü çektiriyim filan modundayım :)
+Nihayet Retrojen'ime kavuşmuş bulunmaktayım :) Emeği geçen tüm arkadaşlara çok teşekkürler, gerçekten bomba gibi bir sayı olmuş ! Murat Adanç zamanı 64'ler ve Laneth'den sonra ilk defa basılı bir dergiyi okurken bu kadar heyecanlandım diyebilirim. Çıkıp bi Naci den Tiamat'ın yeni albümünü çektiriyim filan modundayım :)
 
 Finally My Retrojen arrives from Turkey ! It's a print only magazine for Retro enthusiasts ! Featuring articles about legendary stuff like [Another World](http://www.lemonamiga.com/games/details.php?id=72), Amstrad CPC Turbo loading, and many more ... Feeling sooo 1988 now. Blast from the past !
 
@@ -15,5 +14,5 @@ Finally My Retrojen arrives from Turkey ! It's a print only magazine for Retro e
 日本であまり知られてない、「Commodore」などのレトロパソコンの話が入ってます。
 フロッピーなど、カセットの時代思い出して、すごく懐かしい！
 
-{% img left /images/retrojen.jpg 650 650 'image' 'images' %}
+{% img left /images/custom/retrojen.jpg 650 650 'image' 'images' %}
 
