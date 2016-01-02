@@ -95,3 +95,9 @@ google_analytics_tracking_id: UA-56175514-2
 
 # Facebook Like
 facebook_like: false
+
+mini_magick:
+  galleries_path: "images/custom/galleries"
+  options:
+    - thumbnail: "140x140^"
+    - crop: "140x140-0x0"
