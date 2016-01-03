@@ -12,29 +12,25 @@ require 'mini_magick'
        #   +preset+ is the Preset hash from the config.
        #
        # Returns <GeneratedImageFile>
-       def initialize(site, base, dir, name, preset, gallery)
+       def initialize(site, base, dir, name, options)
          @site = site
          @base = base
          @dir  = dir
          @name = name
-         @gallery = gallery
 
-         galleries_path = site.config['mini_magick']['galleries_path']
          thumbs_dir = site.config['mini_magick']['thumbnail_dir']
 
-         @dst_dir = File.join(File.dirname(base), site.config['destination'], galleries_path, gallery, thumbs_dir)
-         @src_dir = File.join(base, galleries_path, gallery)
-         @commands = preset
+         @dst_dir = File.join(@dir, thumbs_dir)
+         @commands = options
        end
 
-       # Returns source file path.
-       def path
-         File.join(@src_dir, @name)
+       def destination dest
+         File.join(dest, @dst_dir, @name)
        end
 
        # Returns false if the file was not modified since last time (no-op).
        def write(dest)
-         dest_path = File.join(@dst_dir, @name)
+         dest_path = destination(dest)
 
          puts "#{dest_path}"
 
@@ -73,9 +69,9 @@ require 'mini_magick'
          galleries_path = site.config['mini_magick']['galleries_path']
          thumbs_dir = site.config['mini_magick']['thumbnail_dir']
 
-         site.posts.map { |post| post.data["gallery"] }.compact.each do |name|
-           Dir.glob(File.join(site.source, galleries_path, name, "*.{png,jpg,jpeg, gif}")) do |source|
-             site.static_files << GeneratedImageFile.new(site, site.source, File.join(File.dirname(source), thumbs_dir), File.basename(source), options, name)
+         site.posts.map { |post| post.data["gallery"] }.compact.each do |gallery|
+           Dir.glob(File.join(site.source, galleries_path, gallery, "*.{png,jpg,jpeg, gif}")) do |image|
+             site.static_files << GeneratedImageFile.new(site, site.source, File.join(galleries_path, gallery), File.basename(image), options)
            end
          end
        end
