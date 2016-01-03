@@ -16,6 +16,8 @@ gem 'stringex', '~> 1.4.0'
 gem 'liquid', '~> 2.3.0'
 gem 'sinatra', '~> 1.3.5'
 
+gem 'pry'
+gem 'mini_magick'
 gem 'dotenv'
 gem 'aws-sdk', '2.2.1'
 # gem 'therubyracer'

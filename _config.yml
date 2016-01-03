@@ -98,6 +98,7 @@ facebook_like: false
 
 mini_magick:
   galleries_path: "images/custom/galleries"
+  thumbnail_dir: "thumbs"
   options:
     - thumbnail: "140x140^"
     - crop: "140x140-0x0"

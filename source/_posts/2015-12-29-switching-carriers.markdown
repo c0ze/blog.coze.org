@@ -4,15 +4,8 @@ title: "Switching Carriers"
 date: 2015-12-29 14:11
 comments: true
 categories: geek
-gallery:
-  -
-    - { url: '/images/custom/OPO_work_wifi.png', alt: 'OPO Work Wifi'}
-  -
-    - { url: '/images/custom/OPO_docomo_3g.png', alt: 'OPO Docomo 3G'}
-  -
-    - { url: '/images/custom/OPO_home_wifi.png', alt: 'OPO Home Wifi (5G)'}
-  -
-    - { url: '/images/custom/OPO_ymobile_4g.png', alt: 'OPO Ymobile 4G'}
+gallery: keitai-benchmarks
+
 ---
 
 Lately wifey's cellphone was acting up, so I got her a brand new [One Plus X](https://oneplus.net/x) as a christmas present.
@@ -42,4 +35,4 @@ if this persists.
 upload speed ?
 * OPX doesn't support 5G Wifi. Which is the biggest bummer on this otherwise fantastic phone.
 
-{% include gallery.html %}
+{{ 'keitai-benchmarks' | image_list }}

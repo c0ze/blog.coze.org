@@ -12,32 +12,30 @@ require 'mini_magick'
        #   +preset+ is the Preset hash from the config.
        #
        # Returns <GeneratedImageFile>
-       def initialize(site, base, dir, name, preset)
+       def initialize(site, base, dir, name, preset, gallery)
          @site = site
          @base = base
          @dir  = dir
          @name = name
-         @dst_dir = preset.delete('destination')
-         @src_dir = preset.delete('source')
+         @gallery = gallery
+
+         galleries_path = site.config['mini_magick']['galleries_path']
+         thumbs_dir = site.config['mini_magick']['thumbnail_dir']
+
+         @dst_dir = File.join(File.dirname(base), site.config['destination'], galleries_path, gallery, thumbs_dir)
+         @src_dir = File.join(base, galleries_path, gallery)
          @commands = preset
        end
 
-       # Obtains source file path by substituting the preset's source directory
-       # for the destination directory.
-       #
        # Returns source file path.
        def path
-         File.join(@base, @dir.sub(@dst_dir, @src_dir), @name)
+         File.join(@src_dir, @name)
        end
 
-       # Use MiniMagick to create a derivative image at the destination
-       # specified (if the original is modified).
-       #   +dest+ is the String path to the destination dir
-       #
        # Returns false if the file was not modified since last time (no-op).
        def write(dest)
-         dest_path = destination(dest)
-         
+         dest_path = File.join(@dst_dir, @name)
+
          puts "#{dest_path}"
 
          return false if File.exist? dest_path and !modified?
@@ -47,14 +45,14 @@ require 'mini_magick'
          FileUtils.mkdir_p(File.dirname(dest_path))
          image = ::MiniMagick::Image.open(path)
 
-         @commands.each_pair do |command, arg|
-           image.combine_options do |c|
-              arg.each do |option|
-                  option.each {|command, value| c.send command,value}
-              end
+         @commands.each do |option|
+           option.each_pair do |command, arg|
+             image.combine_options do |c|
+               c.send command, arg
+             end
            end
          end
-         
+
          image.write dest_path
          puts "Writing to #{dest_path}"
          true
@@ -71,9 +69,13 @@ require 'mini_magick'
        def generate(site)
          return unless site.config['mini_magick']
 
-         site.config['mini_magick'].each_pair do |name, preset|
-           Dir.glob(File.join(site.source, preset['source'], "*.{png,jpg,jpeg,gif}")) do |source|
-             site.static_files << GeneratedImageFile.new(site, site.source, preset['destination'], File.basename(source), preset.clone)
+         options = site.config['mini_magick']['options']
+         galleries_path = site.config['mini_magick']['galleries_path']
+         thumbs_dir = site.config['mini_magick']['thumbnail_dir']
+
+         site.posts.map { |post| post.data["gallery"] }.compact.each do |name|
+           Dir.glob(File.join(site.source, galleries_path, name, "*.{png,jpg,jpeg, gif}")) do |source|
+             site.static_files << GeneratedImageFile.new(site, site.source, File.join(File.dirname(source), thumbs_dir), File.basename(source), options, name)
            end
          end
        end
