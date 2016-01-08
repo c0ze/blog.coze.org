@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.2.3
-script: "bundle exec jekyll build && bundle exec rake s3"
+script: "cp -r assets _site/ && bundle exec jekyll build && bundle exec rake s3"
 branches:
   only:
     - releases
