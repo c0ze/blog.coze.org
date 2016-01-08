@@ -45,7 +45,13 @@ task :s3 do
 
   traverse_directory(local_dir).flatten.compact.each do |f|
     key = f.gsub(local_dir+"/", "")
-    s3.put_object bucket: bucket_name, key: key, body: File.open(f), acl: "public-read"
+    ext = File.extname(f)
+    if ext == ".html"
+      key = key.gsub(".html", "")
+      s3.put_object bucket: bucket_name, key: key, body: File.open(f), acl: "public-read", content_type: "text/html"
+    else
+      s3.put_object bucket: bucket_name, key: key, body: File.open(f), acl: "public-read"
+    end
   end
 
   p "s3 deploy complete"
