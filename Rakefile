@@ -98,6 +98,7 @@ end # task :page
 
 desc "Launch preview environment"
 task :preview do
+  system "jekyll build"
   system "jekyll serve -w"
 end # task :preview
 
