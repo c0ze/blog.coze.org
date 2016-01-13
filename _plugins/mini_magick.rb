@@ -12,16 +12,13 @@ require 'mini_magick'
        #   +preset+ is the Preset hash from the config.
        #
        # Returns <GeneratedImageFile>
-       def initialize(site, base, dir, name, options)
+       def initialize(site, src_dir, dst_dir, name)
          @site = site
-         @base = base
-         @dir  = dir
+         @base = site.source
+         @dir  = src_dir
+         @dst_dir = dst_dir
          @name = name
-
-         thumbs_dir = site.config['mini_magick']['thumbnail_dir']
-
-         @dst_dir = File.join(@dir, thumbs_dir)
-         @commands = options
+         @commands = site.config['mini_magick']['options']
        end
 
        def destination dest
@@ -58,6 +55,7 @@ require 'mini_magick'
 
      class MiniMagickGenerator < Generator
        safe true
+       priority :highest
 
        # Find all image files in the source directories of the presets specified
        # in the site config.  Add a GeneratedImageFile to the static_files stack
@@ -65,13 +63,16 @@ require 'mini_magick'
        def generate(site)
          return unless site.config['mini_magick']
 
-         options = site.config['mini_magick']['options']
          galleries_path = site.config['mini_magick']['galleries_path']
          thumbs_dir = site.config['mini_magick']['thumbnail_dir']
 
          site.posts.map { |post| post.data["gallery"] }.compact.each do |gallery|
            Dir.glob(File.join(site.source, galleries_path, gallery, "*.{png,jpg,jpeg, gif}")) do |image|
-             site.static_files << GeneratedImageFile.new(site, site.source, File.join(galleries_path, gallery), File.basename(image), options)
+             src_dir = File.join(galleries_path, gallery)
+             dst_dir = File.join(src_dir, thumbs_dir)
+             file = GeneratedImageFile.new(site, src_dir, dst_dir, File.basename(image))
+             site.static_files << file
+             file.write(site.config["destination"])
            end
          end
        end
