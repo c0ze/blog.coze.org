@@ -23,7 +23,12 @@ twitter_username: ardakaraduman
 github_username:  c0ze
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
+redcarpet:
+   extensions:
+     - "disable_indented_code_blocks"
+     - "tables"
+     - "fenced_code_blocks: true"
 
 gems:
   - jekyll-assets
