@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.2.3
-script: bundle exec jekyll build && bundle exec jekyll build && bundle exec rake s3
+script: bundle exec jekyll build && bundle exec jekyll build && bundle exec rake minify && bundle exec rake s3
 branches:
   only:
     - releases
@@ -11,3 +11,4 @@ env:
     - secure: "bHux0Yh5pe5meTLLbRfrRyyLetmRAaOA+YBYUMTgRgNZ1CyxkPMHm3WqDOTzgA/DfMTafoYA0htPf6yB/81ogigPRK+DV4NdCf40Ifr07YXs4Aj4A6qvVVKAb6L/YE0row5nWGj4P7UOzR+0wyo/EV5mQAOnTxiHt41zQdK8oJHGFq5y0LucTDidBaWFdgez02ISyU97wYyx1JVCSmflnpMK6JDOk3IkaZms/p0/xwTChpw2Aikm9K+nHjVbAtqjlKTmRgK1W7J+9hdS4vlkudaHITaw4e+Yg/T5gcTDNtmqB15T3uRkW87h2qvW84nN7+9o0JVQ3AZfQynJWTWfXzGwQyjGqxlw8BS5ll3QZryzUzhDpFjLxVIriUiIn1FIVDiUsPAWXnlPcLdRUzXNce5sGTf86JNTrInWXOGqTQK0IxYb+1peZD0LY1akq+I79TOniAcfmMSP+y2hjPApM76MKVP/AgbIuyBoZQgxQ3ls1aGcBEbEplZ8QglGsMmf3ISWmXG+noAS2BXU8k/dCYHjAJCAK1HRYFbDGJmvMP9y/4s8Iuum01wIH+61UZCoZRgi/GeBH/AoiL4QJjmXyPKZxnoRnpZ0lwlw99ApjE9SLgzAfn7gHOnDmUy9Mnv0jqS5WypSPKnNTYEZ0Me9E9wY0fwPYliiPWWmg/KcM+w="
     - AWS_REGION="us-east-1"
     - AWS_BUCKET_NAME="blog.coze.org"
+    - JEKYLL_ENV=production
