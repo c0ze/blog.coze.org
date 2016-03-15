@@ -76,3 +76,24 @@ Here I will summarise my Gotchas.
 7. ### Awesome Concurrency
 
     Unless you have been hiding in a cave for the last 5 years, Go has awesome support for concurrency.
+    The official motto for concurrency in Go is [Share Memory By Communicating](https://blog.golang.org/share-memory-by-communicating) which
+    is actually an old concept inspired by a paper by C.A.R. Hoare. Concurrency in Go is simply amazing.
+    It is very simple, elegant and easy to understand and debug, especially compared to alternatives in other languages.
+    And it works and SCALES very well (unlike *ahem* some oter languages). Concurrency is something
+    that Go really shines in, so you should really consider giving Go a go if you intend to write a
+    heavily concurrent program.
+
+8. ### Pretty Good Cross Platform Support
+
+    If you ever needed to write a program which needs to run in multiple platforms (ie, MacOs and Linux) and
+    which will need to hit the Os directly in some cases, you know what a head ache and spaghetti it can be.
+    Fortunately Go supports [build constraints](https://golang.org/pkg/go/build/) which can help you organize
+    your code and build process nicely. Build constraints also work in file suffixes, so say if you have a
+    package in `report.go`, you can have MacOs specific stuff in `report_darwin.go` and linux specific stuff in
+    `report_linux.go`. And they will be package accordingly. Once again a simple solution which works really great.
+
+Overall as you might have imagined, I'm pretty impressed by the language, and really looking forward to being able to do
+more with it. In the mean time, I'm also checking Elixir, which is another exiting new language. I am checking a new
+project which I hope I will be able to use it so I hope to be able to blog about it in some near future.
+Another interesting new language is Crystal, but I think it is little bit too young at the moment.
+They need to go little bit more and mature.
