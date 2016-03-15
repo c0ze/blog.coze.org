@@ -68,11 +68,13 @@ require 'mini_magick'
 
          site.posts.map { |post| post.data["gallery"] }.compact.each do |gallery|
            Dir.glob(File.join(site.source, galleries_path, gallery, "*.{png,jpg,jpeg, gif}")) do |image|
-             src_dir = File.join(galleries_path, gallery)
-             dst_dir = File.join(src_dir, thumbs_dir)
-             file = GeneratedImageFile.new(site, src_dir, dst_dir, File.basename(image))
-             site.static_files << file
-             file.write(site.config["destination"])
+             unless File.basename(image) > 20
+               src_dir = File.join(galleries_path, gallery)
+               dst_dir = File.join(src_dir, thumbs_dir)
+               file = GeneratedImageFile.new(site, src_dir, dst_dir, File.basename(image))
+               site.static_files << file
+               file.write(site.config["destination"])
+             end
            end
          end
        end
