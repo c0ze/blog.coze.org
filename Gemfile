@@ -8,6 +8,7 @@ gem 'jekyll-paginate'
 gem 'pygments.rb'
 gem 'mini_magick'
 gem 'redcarpet'
+gem 'reduce'
 
 gem 'pry'
 gem 'dotenv'
