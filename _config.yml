@@ -28,7 +28,11 @@ redcarpet:
    extensions:
      - "disable_indented_code_blocks"
      - "tables"
-     - "fenced_code_blocks: true"
+     - "fenced_code_blocks"
+     - "no_intra_emphasis"
+     - "autolink"
+     - "with_toc_data"
+
 
 gems:
   - jekyll-assets
