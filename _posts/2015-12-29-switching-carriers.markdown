@@ -17,14 +17,14 @@ based [IIJmio](https://www.iijmio.jp/hdd/miofone/) which had a great family plan
 
 Before I jumped ship though, I took some benchmarks.
 
-Phone | Network | Download | Upload
-------|:-------:|:--------:|:------:
-One Plus One | YMobile 4G | 24.4 Mbps | 2.2 Mbps
-One Plus One | Home Wifi (5G) | 20.5 Mbps | 14.1 Mbps
-One Plus One | Work Wifi | 17.9 Mbps | 9.7 Mbps
-One Plus One | Docomo 3G | 3 Mbps | 314 Kbps
-One Plus X | YMobile 4G | 9 Mbps | 8.2 Mbps
-One Plus X | Home Wifi (2G) | 13.4 Mps | 8.3 Mbps
+| Phone | Network | Download | Upload |
+|------|:-------:|:--------:|:------:|
+| One Plus One | YMobile 4G | 24.4 Mbps | 2.2 Mbps |
+| One Plus One | Home Wifi (5G) | 20.5 Mbps | 14.1 Mbps |
+| One Plus One | Work Wifi | 17.9 Mbps | 9.7 Mbps |
+| One Plus One | Docomo 3G | 3 Mbps | 314 Kbps |
+| One Plus X | YMobile 4G | 9 Mbps | 8.2 Mbps |
+| One Plus X | Home Wifi (2G) | 13.4 Mps | 8.3 Mbps |
 
 <br/>
 Some notes :
