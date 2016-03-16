@@ -2,9 +2,11 @@
 source "https://rubygems.org"
 
 gem 'rake'
-gem 'jekyll', '~> 3.1.2'
+gem 'jekyll'
 gem 'jekyll-assets'
 gem 'jekyll-paginate'
+gem 'jekyll-slim', github: 'dmitryzuev/jekyll-slim', branch: 'feature-jekyll3'
+gem 'sliq', git: 'git@github.com:dmitryzuev/sliq.git', branch: 'feature-versions-update'
 gem 'pygments.rb'
 gem 'mini_magick'
 gem 'redcarpet'

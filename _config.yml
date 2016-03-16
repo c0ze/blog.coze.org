@@ -33,6 +33,11 @@ redcarpet:
 gems:
   - jekyll-assets
   - jekyll-paginate
+  - jekyll-slim
+
+slim:
+  pretty: true
+  format: html5
 
 paginate: 5
 
