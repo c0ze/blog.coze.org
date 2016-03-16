@@ -17,7 +17,6 @@ based [IIJmio](https://www.iijmio.jp/hdd/miofone/) which had a great family plan
 
 Before I jumped ship though, I took some benchmarks.
 
-{:.table}
 Phone | Network | Download | Upload
 ------|:-------:|:--------:|:------:
 One Plus One | YMobile 4G | 24.4 Mbps | 2.2 Mbps
