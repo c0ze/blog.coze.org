@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.2.3
+script: bundle exec jekyll build && bundle exec jekyll build && bundle exec rake minify && bundle exec rake s3
+branches:
+  only:
+    - releases
+env:
+  global:
+    - secure: "jlq3HvpA5ODVh4n4LYEnNUdRKwO8IZVKtWGBDlszJiHmBAMd/WXyEJyYly/dr1O+hmKAHAdpXmHe5veKXsRANqXIOZKdtLcKBxM3fMdVge8J/4fqbootKwkMyY0yhK4lkK6cWhU3dsGU4hYZQWa82bjwbZT+r58lo0qvY94t6n/ZAaW53FwxyIzwhONSZwwJO9NsPz3ZIXc4opZkwpKJZHtfF7+FY+zmifgDxget/0gq6KGIJEcOVwfs8wq2ey1ujQUEUo+AakZ5BU1rqP+4wR2/mPgWBqnefZBbBnQBZgRWSWY3CWNbgpm5QtCIdwOyvAl7lyrUTtK9n62t64dcuaKgZ5P2EpfB2eDOjersgcP8Im5eIDQjhVZhs7OpPSze4nObJI+OPzcB9+XO6xWZWf4+whhKKgZMfLlXWJgZKVp3h3R0d5t5/9syLDEM+LnLxoc6eb0+9O7egOBC5GH9G1mMDGmbLhTeCE9jGMYUXradYcQYwlP/wdIGhfyogCGNCsmpFw5RIJygl8Y6LSiUJpFGW2PKrrTdbeEGOcNrBVOqMN5y/jkrEzZ50/jT7mbzgHwsNmHxg/YoBat+JoSn+GOdD5FN756vc9jzRCh2CMc3/Lnh3U03TGedTpQFqrLa1xIwLlsAe45t6LqJHW5jJnbwiz6NT7cbOviCO6XEne0="
+    - secure: "bHux0Yh5pe5meTLLbRfrRyyLetmRAaOA+YBYUMTgRgNZ1CyxkPMHm3WqDOTzgA/DfMTafoYA0htPf6yB/81ogigPRK+DV4NdCf40Ifr07YXs4Aj4A6qvVVKAb6L/YE0row5nWGj4P7UOzR+0wyo/EV5mQAOnTxiHt41zQdK8oJHGFq5y0LucTDidBaWFdgez02ISyU97wYyx1JVCSmflnpMK6JDOk3IkaZms/p0/xwTChpw2Aikm9K+nHjVbAtqjlKTmRgK1W7J+9hdS4vlkudaHITaw4e+Yg/T5gcTDNtmqB15T3uRkW87h2qvW84nN7+9o0JVQ3AZfQynJWTWfXzGwQyjGqxlw8BS5ll3QZryzUzhDpFjLxVIriUiIn1FIVDiUsPAWXnlPcLdRUzXNce5sGTf86JNTrInWXOGqTQK0IxYb+1peZD0LY1akq+I79TOniAcfmMSP+y2hjPApM76MKVP/AgbIuyBoZQgxQ3ls1aGcBEbEplZ8QglGsMmf3ISWmXG+noAS2BXU8k/dCYHjAJCAK1HRYFbDGJmvMP9y/4s8Iuum01wIH+61UZCoZRgi/GeBH/AoiL4QJjmXyPKZxnoRnpZ0lwlw99ApjE9SLgzAfn7gHOnDmUy9Mnv0jqS5WypSPKnNTYEZ0Me9E9wY0fwPYliiPWWmg/KcM+w="
+    - AWS_REGION="us-east-1"
+    - AWS_BUCKET_NAME="blog.coze.org"
