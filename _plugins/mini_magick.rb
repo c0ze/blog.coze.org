@@ -66,7 +66,7 @@ require 'mini_magick'
          galleries_path = site.config['mini_magick']['galleries_path']
          thumbs_dir = site.config['mini_magick']['thumbnail_dir']
 
-         site.posts.map { |post| post.data["gallery"] }.compact.each do |gallery|
+         site.posts.docs.map { |post| post.data["gallery"] }.compact.each do |gallery|
            Dir.glob(File.join(site.source, galleries_path, gallery, "*.{png,jpg,jpeg, gif}")) do |image|
              src_dir = File.join(galleries_path, gallery)
              dst_dir = File.join(src_dir, thumbs_dir)
