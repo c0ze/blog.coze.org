@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Golang Gotchas"
+subtitle: "entry level tips into Go-lang programming"
+keywords: "programming, go, google, best practices, development"
 date: 2016-02-26 14:11
 comments: true
 categories: dev
@@ -38,7 +40,7 @@ Here I will summarise my Gotchas.
     or attributes of an active model, the answer is usually only a method away. Go doesn't support much meta magic though,
     so when you need to do something like that you need to use reflection
 
-    {% highlight go %}
+        {% highlight go %}
         // returns a string representation of a struct.
         func GetStructStr(lead string, strct interface{}) string {
             str := lead
@@ -52,7 +54,7 @@ Here I will summarise my Gotchas.
             }
             return str
         }
-    {% endhighlight %}
+        {% endhighlight %}
 
 4. ### Lack of Generics aka. the interface{} Black Hole
 

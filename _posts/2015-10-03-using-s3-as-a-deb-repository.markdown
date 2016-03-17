@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Our Gitlab CI setup"
+subtitle: "Continous Integration, Continous Delivery"
+keywords: "devops, Go-lang, docker, CI, gitlab, aws, debian, s3, apt"
 date: 2015-10-03 12:06
 comments: true
 categories: dev

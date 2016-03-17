@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Eddystone vs iBeacon"
+subtitle: "An Evaluation of competing advertising protocols in the IoT space"
+keywords: "iot, estimote, ble, bluetooth, beacon, ibeacon, eddystone, go, golang"
 date: 2015-10-30 09:49
 comments: true
 categories: dev

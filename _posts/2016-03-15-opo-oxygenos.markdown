@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Stellar Battery on Oxygen OS"
+subtitle: "One Plus One mobile set alternative OS experience"
+keywords: "android, mobile, aosp, one plus one, battery, oxygenos"
 date: 2016-03-15 01:31
 comments: true
 categories: geek

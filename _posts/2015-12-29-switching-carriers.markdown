@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Switching Carriers"
+subtitle: "A basic comparison of leading Japanese mobile carriers"
+keywords: "mobile, android, one plus, 3G, 4G, YMobile, Docomo"
 date: 2015-12-29 14:11
 comments: true
 categories: geek
