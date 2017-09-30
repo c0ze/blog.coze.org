@@ -10,7 +10,4 @@ gem 'mini_magick'
 gem 'redcarpet'
 gem 'reduce'
 
-gem 'pry'
-gem 'dotenv'
-gem 'aws-sdk', '2.2.1'
-# gem 'therubyracer'
+gem 'emblaze'
