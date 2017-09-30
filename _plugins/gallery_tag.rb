@@ -1,5 +1,3 @@
-require 'pry'
-
 module ImageList
   def image_list( name )
     build_dir = @context.registers[:site].config["destination"]
