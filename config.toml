@@ -1,5 +1,6 @@
-title = "Coze's Blog"
+title = "CoZe's Blog"
 baseurl = "https://blog.coze.org/"
+relativeurls = false
 languageCode = "en-us"
 theme = "hyde"
 tags = ["dev", "retro", "music", "geek"]
@@ -8,3 +9,19 @@ disqusShortname = "coze"
 
 [params]
     description = "musings and ramblings from the land of the rising sun"
+
+[menu]
+
+  [[menu.main]]
+      identifier = "about"
+      name = "About"
+      pre = "<i class='fa fa-heart'></i>"
+      url = "https://arda.karaduman.web.tr"
+      weight = -110
+
+  [[menu.main]]
+      identifier = "tags"
+      name = "Tags"
+      pre = "<i class='fa fa-heart'></i>"
+      url = "/tags"
+      weight = -110
