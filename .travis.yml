@@ -1,0 +1,16 @@
+before_install:
+  - wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
+  - sudo dpkg -i hugo_0.49_Linux-64bit.deb
+  - wget https://github.com/bep/s3deploy/releases/download/v2.1.0/s3deploy_2.1.0_Linux-64bit.deb
+  - sudo dpkg -i s3deploy_2.1.0_Linux-64bit.deb
+
+script: ./deploy.sh
+branches:
+  only:
+    - hugo-releases
+env:
+  global:
+    - secure: opd/Gl/BkYOvSHt5OPiM5Zs4aydWwfyprLXE+uD5q60rp81zPE/j9UW2Yv2JGkB445ktDGV7KgIEIkBXrPTJVK59pbOig9snKpSmJ6Xt2mEL+XhRWSyN+vGrRTJNRo4X03Ps63PJjxwFFQH9w6VtOfRwb3hekSkhp4tYOA6tHdpT2g62wWy+QJGXV5ihPC5Eewd0hBYpiJvAxc+DEYTzgT6qvCVBXe3cYgqljJXgMN2w0JXXMzQ0M+AYMUonFO8rslLUlqdKMiAvXCg2BUcTjAP1U2vRkdakikAt6svUFeY1Z0Jie4tDGQTyPGiW+7RH6CFbcRkX2Y+tcaSB108N6qEsNsekcSD2QH87TU/xBjylJSS92dnIUXwFF9s0n0I9k4Va6rxgVDAznNnaTd/874y9jpN7dEhO/AShGFCyc+aHTw/cU58IuYNUeQRU7G9jpnmaUbVUcJM2g1BnIGtVQTwxnKgteSHTkdPMBItbV0bHONxivlxlKRgLyh5momNJCVe+/9UexI2bbwW1ijjEN8PC0J5iTKfxumaeo4UDO1X8m6ISRuVqyCdzjKvzsC05vJxfpEjfoO97291CdFoSZIfht4h8AMYwpMg91kulNhyAOiubOOzViw+LeRc6Lr8zYDGMuw7TyMuhzHvT4g8Opu0+CzazJSLE722qu58wPdQ=
+    - secure: HKSCIn59Z+wtZnwLgCsTRsQD9bBxuDxmlTxYt9WjOLv7e0lIjhQfijwIbQPDei0/ZOLNJhiJPpFPdVp3eXHonFA7F1C5ZHnq0Eqoo8jqm67Fc1wmwWQybBcO6yyTMlMx3m8Nx8iVA6g0dKgwcE4cPM8dyrqRlyKWcfQ4WVzOLtBJ1OHe+ug+vWIVNmFbGSFiMLsWxS2DgabVY8aw7RX8nxTgQV/BR8mmJEiz8+mcLZF3ZWvFD8eNvX5IUpppFTJgver0XIrCV1IvirMAg5MPQr2drZOw2bkbEW4xDxbjYaq6eyghT/qFQZs9G99uzgmoyfK1plGd9iCdpJfuFKZ+AFJqGH13fTR6CBl80K2YUzXsiijTVcieIK6Rn2mscLwLse97fnd5YL6oZG+H+55LsJp7ahxxeS0hEV/uPJ0c8W4Y1uQLMUvj7nGIE9I30yIxDxDULtHepzqXUHi3XggPu6ZY9a3pwSAmCKOPRSc/WlGtuwd5UUW8x39avTRcdysW/OGGrykL10k7ea0pRB7bQU7BPw7og7NW0WhTExCAtPRbrbyAynMPF9xHuLoOvk572a3fPprMlz2gevaJIonKfIoE6TtWIOiYKZ6tOgI7Y+5cRTd6ZzSITcpRAg97ol1SSEGoI07fHIpbj5i/B8NxEvqmledV4RLGQ/pPlIkfrrE=
+    - AWS_REGION="us-east-1"
+    - AWS_BUCKET_NAME="blog.coze.org"
