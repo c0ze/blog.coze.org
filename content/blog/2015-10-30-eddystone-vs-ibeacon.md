@@ -3,7 +3,7 @@ layout: post
 title: "Eddystone vs iBeacon"
 date: "2015-10-30"
 comments: true
-tags: dev
+tags: [dev]
 draft: false
 ---
 

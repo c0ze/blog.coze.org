@@ -3,7 +3,7 @@ layout: post
 title: "Golang Gotchas"
 date: "2016-02-26"
 comments: true
-tags: dev
+tags: [dev]
 draft: false
 ---
 

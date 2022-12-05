@@ -3,7 +3,7 @@ layout: post
 title: "Our Gitlab CI setup"
 date: "2015-10-03"
 comments: true
-tags: dev
+tags: [dev]
 draft: false
 ---
 

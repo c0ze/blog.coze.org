@@ -2,13 +2,54 @@ title = "CoZe's Blog"
 baseurl = "https://blog.coze.org/"
 relativeurls = false
 languageCode = "en-us"
-theme = "hyde"
-tags = ["dev", "retro", "music", "geek"]
+theme = "m10c"
+
 googleAnalytics = "UA-56175514-2"
 disqusShortname = "coze"
 
+[taxonomies]
+   tag = "tags"
+   category = "categories"
+
 [params]
     description = "musings and ramblings from the land of the rising sun"
+    author = "Arda Karaduman"
+    avatar = "/coze.jpg"
+
+  [[params.social]]
+    icon = "github"
+    name = "My Github"
+    url = "https://github.com/c0ze"
+
+  [[params.social]]
+    icon = "mastodon"
+    name = "Mastodon"
+    url = "https://mastodon.world/@arda"
+
+  [[params.social]]
+    icon = "facebook"
+    name = "Facebook"
+    url = "https://www.facebook.com/karaduman.arda"
+
+  [[params.social]]
+    icon = "linkedin"
+    name = "Linkedin"
+    url = "https://www.linkedin.com/in/ardakaraduman/"
+
+  [[params.social]]
+    icon = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/ardakaraduman"
+
+  [[params.social]]
+    icon = "metal"
+    name = "Metal Encyclopedia"
+    url = "https://www.metal-archives.com/artists/Talciron/36967"
+
+  [[params.social]]
+    icon = "lp"
+    name = "Discogs"
+    url = "https://www.discogs.com/artist/5627323-Arda-Karaduman"
 
 [menu]
 
@@ -20,8 +61,13 @@ disqusShortname = "coze"
       weight = -110
 
   [[menu.main]]
-      identifier = "tags"
-      name = "Tags"
-      pre = "<i class='fa fa-heart'></i>"
-      url = "/tags"
-      weight = -110
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+
+[deployment]
+
+  [[deployment.targets]]
+    name = "AWS"
+    URL = "s3://blog.coze.org?region=us-east-1"
+    cloudFrontDistributionID = "E2EWQ6DX827MBP"

@@ -3,7 +3,7 @@ layout: post
 title: "just deployed to s3 ! Yay !"
 date: "2013-04-06"
 comments: true
-tags: dev
+tags: [dev]
 draft: false
 ---
 

@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Our Gitlab CI setup // CoZe&#39;s Blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.107.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Arda Karaduman" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.9e9c6027c30f5aa9423b581bd9cddd1ddc66088adb9c2604f89eb5828efea5a1.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-56175514-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Our Gitlab CI setup"/>
+<meta name="twitter:description" content="We&rsquo;re fervent supporters of Gitlab in our company, and when they rolled out a new CI module, we immediately jumped in to see how we can use it. In the past I&rsquo;ve had experience with Jenkins, and a little bit with Travis. The Gitlab CI module is kind of based on Travis which is cool. It&rsquo;s rather new so I had my doubts about it initially, but fortunately it turned out pretty good."/>
+
+    <meta property="og:title" content="Our Gitlab CI setup" />
+<meta property="og:description" content="We&rsquo;re fervent supporters of Gitlab in our company, and when they rolled out a new CI module, we immediately jumped in to see how we can use it. In the past I&rsquo;ve had experience with Jenkins, and a little bit with Travis. The Gitlab CI module is kind of based on Travis which is cool. It&rsquo;s rather new so I had my doubts about it initially, but fortunately it turned out pretty good." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.coze.org/blog/2015-10-03-using-s3-as-a-deb-repository/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2015-10-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-10-03T00:00:00+00:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://blog.coze.org/"><img class="app-header-avatar" src="/coze.jpg" alt="Arda Karaduman" /></a>
+      <span class="app-header-title">CoZe&#39;s Blog</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="https://arda.karaduman.web.tr">About</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags/">Tags</a>
+      </nav>
+      <p>musings and ramblings from the land of the rising sun</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/c0ze" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>My Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://mastodon.world/@arda" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.facebook.com/karaduman.arda" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-facebook">
+  <title>Facebook</title>
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.linkedin.com/in/ardakaraduman/" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>Linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/ardakaraduman" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>Twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.metal-archives.com/artists/Talciron/36967" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+          <a href="https://www.discogs.com/artist/5627323-Arda-Karaduman" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Our Gitlab CI setup</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Oct 3, 2015
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://blog.coze.org/tags/dev/">dev</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>We&rsquo;re fervent supporters of Gitlab in our company, and <a href="https://about.gitlab.com/2015/09/22/gitlab-8-0-released/">when they rolled out a new CI module</a>, we immediately jumped in to see how
+we can use it. In the past I&rsquo;ve had experience with Jenkins, and a little bit with Travis. The Gitlab CI module is kind of based on Travis which is cool.
+It&rsquo;s rather new so I had my doubts about it initially, but fortunately it turned out pretty good.</p>
+<h2 id="the-project-for-the-ci">The Project for the CI</h2>
+<p>Recently I&rsquo;m working on a project where we need to distribute a software to a fleet of raspberry pis.
+I had already packaged it nicely with goxc, but I was not really sure about how I would distribute it.
+I was contemplating two options</p>
+<ul>
+<li>build at CI and deploy via something like ansible</li>
+<li>build at CI, deploy to a central repo, and fetch from the clients</li>
+</ul>
+<p>Setting up with ansible is easier to setup initially, but
+as our fleet grew larger it is bound to be a management hell. So I bit the bullet and decided to setup a repo.
+I had two options there too, I either had to</p>
+<ul>
+<li>spin up a new server<br>
+<em>which I thought was overkill, and I would have a hard time pushing it to Op&rsquo;s, because one more server is one more headache to maintain</em></li>
+<li>piggyback it to an existing server<br>
+<em>which is pretty damn ugly and subject to other kinds of headaches</em></li>
+</ul>
+<p>Then I did research as to what actually is a repository server, and it dawned at me that it could very well be
+a static file directory, and I don&rsquo;t actually need to spin up a dedicated server. I checked up little bit and
+sure enough, there are folks who use AWS S3 as an apt repository. We need two tools to setup:</p>
+<ul>
+<li>
+<p>on the client side we use <a href="https://github.com/castlabs/apt-s3">apt-s3</a>, which lets you use a S3 bucket
+as an apt source. I didn&rsquo;t want my repository to be public, so I created a reader user with reading privileges
+on the bucket, and configure apt-s3 at the clients as a file under <code>/etc/apt/sources.list.d</code>.</p>
+</li>
+<li>
+<p>On the CI side we use <a href="https://github.com/krobertson/deb-s3">deb-s3</a> to prepare deb repo and upload to the s3 bucket.</p>
+</li>
+</ul>
+<p>My project is written in Go, so I used <a href="https://github.com/laher/goxc">goxc</a> For cross-compiling to arm/linux.
+Initially we are also using goxc for deb packaging, but we soon ran into some problems there, since goxc is not meant to be
+a true deb packager. <a href="https://github.com/laher/goxc/issues/86">It doesn&rsquo;t support some deb niceties</a> (like conffiles, postinst, prerm) so we switched to packaging
+with <code>dpkg-buildpackage</code> as its meant to be. For pushing the package to the repository, I created a master key-pair for the bucket and
+used deb-s3 as planned.</p>
+<p>here is some of my configuration in case your mouth is watering for some config pron :</p>
+<h3 id="goxcjson">.goxc.json</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ArtifactsDest&#34;</span>: <span style="color:#e6db74">&#34;./build&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Tasks&#34;</span>: [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;xc&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;copy-resources&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;BuildConstraints&#34;</span>: <span style="color:#e6db74">&#34;linux,arm&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ConfigVersion&#34;</span>: <span style="color:#e6db74">&#34;0.9&#34;</span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<p>a previous version looked like this, when I was using goxc for deb packaging as well :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ArtifactsDest&#34;</span>: <span style="color:#e6db74">&#34;./build&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Tasks&#34;</span>: [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;xc&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;copy-resources&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;deb&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;rmbin&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;TaskSettings&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;deb&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;other-mapped-files&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;/&#34;</span>: <span style="color:#e6db74">&#34;files/&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;BuildConstraints&#34;</span>: <span style="color:#e6db74">&#34;linux,arm&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ConfigVersion&#34;</span>: <span style="color:#e6db74">&#34;0.9&#34;</span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<h3 id="dockerfile">Dockerfile</h3>
+<p>Docker file for gitlab CI image which runs the build :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang:1.4.3</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get install -y git ruby ruby-dev zlib1g-dev npm sudo dh-make --fix-missing<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> gem install deb-s3 --no-rdoc --no-ri<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> gem install slim --no-rdoc --no-ri<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm config set registry http://registry.npmjs.org/<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm install -g coffee-script<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ln -s /usr/bin/nodejs /usr/bin/node<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go get github.com/laher/goxc<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go get golang.org/x/tools/cmd/vet<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> goxc -t -arch<span style="color:#f92672">=</span>arm -bc<span style="color:#f92672">=</span>linux<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span> ./ /go/src/gitlab.mycompany.com/FupIntuition<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /go/src/gitlab.mycompany.com/FupIntuition</span></span></span></code></pre></div>
+<p>This basically sets up the docker container for building and asset compilation etc.
+Docker file I use locally for testing the builds:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> golang:1.4.3</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get install -y git ruby ruby-dev zlib1g-dev npm sudo dh-make --fix-missing<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> gem install deb-s3 --no-rdoc --no-ri<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> gem install slim --no-rdoc --no-ri<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm config set registry http://registry.npmjs.org/<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm install -g coffee-script<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ln -s /usr/bin/nodejs /usr/bin/node<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go get github.com/laher/goxc<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go get golang.org/x/tools/cmd/vet<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> goxc -t -arch<span style="color:#f92672">=</span>arm -bc<span style="color:#f92672">=</span>linux<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span> ./ /go/src/gitlab.mycompany.com/FupIntuition<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /go/src/gitlab.mycompany.com/FupIntuition</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ./install_dependencies.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> ./compile_assets.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> goxc -pv<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>go run intuition.go -c<span style="color:#f92672">=</span>./intuition.yaml -v<span style="color:#e6db74">`</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cp build/*/linux_arm/FupIntuition files/usr/bin<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> dpkg-buildpackage -aarmhf -tlinux -B -us -uc</span></span></code></pre></div>
+<p>This does the actual building. However you&rsquo;re not supposed to run the actual build commands inside the
+Dockerfile. We run these from the gitlab-ci, which is triggered by the configuration file which follows.</p>
+<h3 id="gitlab-ciyml">gitlab-ci.yml</h3>
+<p>Gitlab ci defines the stages and how to run the build.
+initially I had separate build and deploy stages, but in my case these are
+always needed to run sequentially, and I couldn&rsquo;t figure out how to make gitlab-ci
+export the binary artifacts after the build, so I concatenated them. I may separate them
+in the future.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">stages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">test</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">arda_intuition</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">mkdir -p /usr/src/go/src/gitlab.mycompany.com</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">ln -s `pwd` /usr/src/go/src/gitlab.mycompany.com/FupIntuition</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sh ./install_dependencies.sh</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">go test ./...</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">go vet ./...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">image</span>: <span style="color:#ae81ff">arda_intuition</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">only</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">releases</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">mkdir -p /usr/src/go/src/gitlab.mycompany.com</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">ln -s `pwd` /usr/src/go/src/gitlab.mycompany.com/FupIntuition</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sh ./install_dependencies.sh</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sh ./compile_assets.sh</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">goxc -pv=`go run intuition.go -c=./intuition.yaml -v`</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">cp build/*/linux_arm/FupIntuition files/usr/bin</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">dpkg-buildpackage -aarmhf -tlinux -B -us -uc</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sh /deploy_scripts/deploy_intuition.sh /builds/followup/intuition_`go run intuition.go -c=./intuition.yaml -v`_armhf.deb</span></span></span></code></pre></div>
+<p>The test stage is run whenever any branch is pushed into the repo. Deploy stage is run only
+when the <code>releases</code> branch is pushed. It is a protected branch which only I can push at the moment.
+So doing a release is as simple as bumping version, updating changelog, and pushing to releases !</p>
+<p>The <code>deploy_intuition.sh</code> script is the magic script which uploads the deb file to s3 repo. I didn&rsquo;t want to
+check it in SCM because it contains vital access keys, so it is hard-coded in the container.</p>
+<p>That&rsquo;s it ! Hopefully this gives some people new ideas ! I am totally pleased with my setup
+and looking forward to improving on it and applying it to more of my projects.</p>
+
+    </div>
+    <div class="post-footer">
+      <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coze" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

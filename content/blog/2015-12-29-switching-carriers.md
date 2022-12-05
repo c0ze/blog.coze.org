@@ -3,7 +3,7 @@ layout: post
 title: "Switching Carriers"
 date: "2015-12-29"
 comments: true
-tags: geek
+tags: [geek]
 draft: false
 ---
 

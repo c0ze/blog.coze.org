@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on CoZe&#39;s Blog</title>
+    <link>https://blog.coze.org/tags/</link>
+    <description>Recent content in Tags on CoZe&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Oct 2018 13:12:12 +0900</lastBuildDate><atom:link href="https://blog.coze.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dev</title>
+      <link>https://blog.coze.org/tags/dev/</link>
+      <pubDate>Tue, 02 Oct 2018 13:12:12 +0900</pubDate>
+      
+      <guid>https://blog.coze.org/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>geek</title>
+      <link>https://blog.coze.org/tags/geek/</link>
+      <pubDate>Tue, 15 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/tags/geek/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>music</title>
+      <link>https://blog.coze.org/tags/music/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/tags/music/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>retro</title>
+      <link>https://blog.coze.org/tags/retro/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/tags/retro/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

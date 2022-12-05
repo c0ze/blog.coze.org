@@ -3,7 +3,7 @@ layout: post
 title: "Stellar Battery on Oxygen OS"
 date: "2016-03-15"
 comments: true
-tags: geek
+tags: [geek]
 draft: false
 ---
 

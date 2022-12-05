@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on CoZe&#39;s Blog</title>
+    <link>https://blog.coze.org/blog/</link>
+    <description>Recent content in Blogs on CoZe&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Oct 2018 13:12:12 +0900</lastBuildDate><atom:link href="https://blog.coze.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Moved everything to Hugo</title>
+      <link>https://blog.coze.org/blog/2018-10-02-hugo/</link>
+      <pubDate>Tue, 02 Oct 2018 13:12:12 +0900</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2018-10-02-hugo/</guid>
+      <description>So it&amp;rsquo;s already 2018, and it&amp;rsquo;s time to say goodbye to Jekyll, and move on to greener pastures. I moved my blog and personal CV site over to Hugo the new cool kid in the static web site generators block. So far, I like it&amp;rsquo;s simplicity and fastness. It doesnt have the flexibility of Jekyll, but we&amp;rsquo;ll see if that will bite me in the long run. In the porting process, to only thing I couldn&amp;rsquo;t find is a gallery / carousel plugin, because, unlike Jekyll, hugo doesn&amp;rsquo;t have plugins, so one of my pages is kinda broken.</description>
+    </item>
+    
+    <item>
+      <title>Just created a Ruby Gem</title>
+      <link>https://blog.coze.org/blog/2017-09-30-emblaze/</link>
+      <pubDate>Sat, 30 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2017-09-30-emblaze/</guid>
+      <description>I had this old Ruby script lying around which I was using to upload my sites to s3 whenever I wanted to deploy something new.
+However, as you can imagine, copying this script around was not the best solution as in time, I added bits here and there, updated to use new aws-sdk etc, and keeping them all in sync was getting tedious &amp;hellip;
+Sooo, finally I nudged myself and put it in a gem.</description>
+    </item>
+    
+    <item>
+      <title>Stellar Battery on Oxygen OS</title>
+      <link>https://blog.coze.org/blog/2016-03-15-opo-oxygenos/</link>
+      <pubDate>Tue, 15 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2016-03-15-opo-oxygenos/</guid>
+      <description>I have been getting stability issues with Cyanogen on my OPO lately, so I decided to give OnePlus&amp;rsquo;s native OxygenOS a whirl. First I installed the initial version 1.0.0, which was kind of dated. I thought I could make my way into a newer version via OTA updates, alas, no there is no OTA available for OPO it seems, which is kind of baffling.
+So I flashed the newest version, which was 2.</description>
+    </item>
+    
+    <item>
+      <title>Golang Gotchas</title>
+      <link>https://blog.coze.org/blog/2016-02-26-golang-gotchas/</link>
+      <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2016-02-26-golang-gotchas/</guid>
+      <description>I&amp;rsquo;ve been playing around with golang lately, and got to know its intricacies better. At first, I have to admit I was not very enthusiastic playing with it, but the more I got to know about it, the more I warmed to to its concepts. And I observed it has matured pretty well from version 1.1 when I first started to play with it to version 1.4 and 1.5 when I first got do to something useful using Go.</description>
+    </item>
+    
+    <item>
+      <title>Switching Carriers</title>
+      <link>https://blog.coze.org/blog/2015-12-29-switching-carriers/</link>
+      <pubDate>Tue, 29 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2015-12-29-switching-carriers/</guid>
+      <description>Lately wifey&amp;rsquo;s cellphone was acting up, so I got her a brand new One Plus X as a christmas present. Unfortunately, the SIM that was installed in her YMobile provided Huawei P7 didn&amp;rsquo;t like the One Plus X. I&amp;rsquo;m not sure what was the problem, but we were not able to enter the Ymobile APN for some reason, and the default APN installed in the SIM didn&amp;rsquo;t work in One Plus, and YMobile customer service were not able to help.</description>
+    </item>
+    
+    <item>
+      <title>Eddystone vs iBeacon</title>
+      <link>https://blog.coze.org/blog/2015-10-30-eddystone-vs-ibeacon/</link>
+      <pubDate>Fri, 30 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2015-10-30-eddystone-vs-ibeacon/</guid>
+      <description>If you are interested in IoT, you&amp;rsquo;ve probably heard of Estimote. They are probably the leading beacon provider in the IoT field and that&amp;rsquo;s for a good reason. We&amp;rsquo;ve had their dev kit for a while, and had since been using them happily ever since. Their beacons quality is top notch, software frequently updated, and customer service usually responsive.
+As of recently, Estimote annouced support for Google&amp;rsquo;s Eddystone protocol, a beacon broadcast protocol which is a competitor to iBeacon from Apple.</description>
+    </item>
+    
+    <item>
+      <title>Our Gitlab CI setup</title>
+      <link>https://blog.coze.org/blog/2015-10-03-using-s3-as-a-deb-repository/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2015-10-03-using-s3-as-a-deb-repository/</guid>
+      <description>We&amp;rsquo;re fervent supporters of Gitlab in our company, and when they rolled out a new CI module, we immediately jumped in to see how we can use it. In the past I&amp;rsquo;ve had experience with Jenkins, and a little bit with Travis. The Gitlab CI module is kind of based on Travis which is cool. It&amp;rsquo;s rather new so I had my doubts about it initially, but fortunately it turned out pretty good.</description>
+    </item>
+    
+    <item>
+      <title>AC Chee Z !</title>
+      <link>https://blog.coze.org/blog/2013-06-01-ac-chee-z/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2013-06-01-ac-chee-z/</guid>
+      <description>Recently I joined a AC/DC tribute band, to pay homage to the legends. Last night was our first gig, I was little bit concerned, cause we didnt have enough practice. But it turned out really well. Great fun !
+Kudos to Tokyo Underground legend Andy Mc Kinlay from the Kinlay Band for making this possible !</description>
+    </item>
+    
+    <item>
+      <title>Enter Retrojen !</title>
+      <link>https://blog.coze.org/blog/2013-05-26-enter-retrojen/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2013-05-26-enter-retrojen/</guid>
+      <description>Nihayet Retrojen&amp;rsquo;ime kavuşmuş bulunmaktayım :) Emeği geçen tüm arkadaşlara çok teşekkürler, gerçekten bomba gibi bir sayı olmuş ! Murat Adanç zamanı 64&amp;rsquo;ler ve Laneth&amp;rsquo;den sonra ilk defa basılı bir dergiyi okurken bu kadar heyecanlandım diyebilirim. Çıkıp bi Naci den Tiamat&amp;rsquo;ın yeni albümünü çektiriyim filan modundayım :)
+Finally My Retrojen arrives from Turkey ! It&amp;rsquo;s a print only magazine for Retro enthusiasts ! Featuring articles about legendary stuff like Another World, Amstrad CPC Turbo loading, and many more &amp;hellip; Feeling sooo 1988 now.</description>
+    </item>
+    
+    <item>
+      <title>first post baby</title>
+      <link>https://blog.coze.org/blog/2013-04-06-first-post-baby/</link>
+      <pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2013-04-06-first-post-baby/</guid>
+      <description>Testing the waters &amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>just deployed to s3 ! Yay !</title>
+      <link>https://blog.coze.org/blog/2013-04-06-just-deployed-to-s3-yay/</link>
+      <pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.coze.org/blog/2013-04-06-just-deployed-to-s3-yay/</guid>
+      <description>Hello from s3 ! After some twidling with the marvelous Octopress, I was able to deploy my blog to Amazon s3 ! HUZZAH !! No more messing around with servers/dbs, no need to worry about server load/downtime, long live static blogging !
+AWESOME</description>
+    </item>
+    
+  </channel>
+</rss>

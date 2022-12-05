@@ -3,7 +3,7 @@ layout: post
 title: "Enter Retrojen !"
 date: "2013-05-26"
 comments: true
-tags: retro
+tags: [retro]
 draft: false
 ---
 
