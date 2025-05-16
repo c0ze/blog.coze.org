@@ -1,8 +1,8 @@
 title = "CoZe's Blog"
-baseurl = "https://blog.coze.org/"
+baseurl = "https://c0ze.github.io/blog.coze.org/"
 relativeurls = false
 languageCode = "en-us"
-theme = "m10c"
+theme = "PaperMod"
 
 googleAnalytics = "UA-56175514-2"
 disqusShortname = "coze"
@@ -11,6 +11,8 @@ disqusShortname = "coze"
    tag = "tags"
    category = "categories"
 
+[markup.goldmark.renderer]
+  unsafe = true
 [params]
     description = "musings and ramblings from the land of the rising sun"
     author = "Arda Karaduman"
@@ -64,10 +66,3 @@ disqusShortname = "coze"
     identifier = "tags"
     name = "Tags"
     url = "/tags/"
-
-[deployment]
-
-  [[deployment.targets]]
-    name = "AWS"
-    URL = "s3://blog.coze.org?region=us-east-1"
-    cloudFrontDistributionID = "E2EWQ6DX827MBP"

@@ -1,78 +1,84 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>dev on CoZe&#39;s Blog</title>
-    <link>https://blog.coze.org/tags/dev/</link>
-    <description>Recent content in dev on CoZe&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Dev on CoZe&#39;s Blog</title>
+    <link>http://localhost:1313/blog.coze.org/tags/dev/</link>
+    <description>Recent content in Dev on CoZe&#39;s Blog</description>
+    <generator>Hugo -- 0.147.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Oct 2018 13:12:12 +0900</lastBuildDate><atom:link href="https://blog.coze.org/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Oct 2018 13:12:12 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog.coze.org/tags/dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Moved everything to Hugo</title>
-      <link>https://blog.coze.org/blog/2018-10-02-hugo/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2018-10-02-hugo/</link>
       <pubDate>Tue, 02 Oct 2018 13:12:12 +0900</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2018-10-02-hugo/</guid>
-      <description>So it&amp;rsquo;s already 2018, and it&amp;rsquo;s time to say goodbye to Jekyll, and move on to greener pastures. I moved my blog and personal CV site over to Hugo the new cool kid in the static web site generators block. So far, I like it&amp;rsquo;s simplicity and fastness. It doesnt have the flexibility of Jekyll, but we&amp;rsquo;ll see if that will bite me in the long run. In the porting process, to only thing I couldn&amp;rsquo;t find is a gallery / carousel plugin, because, unlike Jekyll, hugo doesn&amp;rsquo;t have plugins, so one of my pages is kinda broken.</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2018-10-02-hugo/</guid>
+      <description>&lt;p&gt;So it&amp;rsquo;s already 2018, and it&amp;rsquo;s time to say goodbye to Jekyll, and move on to greener pastures. I moved my blog and personal CV site over to &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; the new cool kid in the static web site generators block. So far, I like it&amp;rsquo;s simplicity and fastness. It doesnt have the flexibility of Jekyll, but we&amp;rsquo;ll see if that will bite me in the long run. In the porting process, to only thing I couldn&amp;rsquo;t find is a gallery / carousel plugin, because, unlike Jekyll, hugo doesn&amp;rsquo;t have plugins, so one of my pages is kinda broken. I will have to come up with a custom gallery solution for it some time (which will involve lots of js I am afraid).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Just created a Ruby Gem</title>
-      <link>https://blog.coze.org/blog/2017-09-30-emblaze/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2017-09-30-emblaze/</link>
       <pubDate>Sat, 30 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2017-09-30-emblaze/</guid>
-      <description>I had this old Ruby script lying around which I was using to upload my sites to s3 whenever I wanted to deploy something new.
-However, as you can imagine, copying this script around was not the best solution as in time, I added bits here and there, updated to use new aws-sdk etc, and keeping them all in sync was getting tedious &amp;hellip;
-Sooo, finally I nudged myself and put it in a gem.</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2017-09-30-emblaze/</guid>
+      <description>&lt;p&gt;I had this old Ruby script lying around which I was using to upload my sites to s3 whenever I
+wanted to deploy something new.&lt;/p&gt;
+&lt;script src=&#34;https://gist.github.com/c0ze/0bcf901231e19dc4303d.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;However, as you can imagine, copying this script around was not the best solution as in time, I added bits
+here and there, updated to use new aws-sdk etc, and keeping them all in sync was getting tedious &amp;hellip;&lt;/p&gt;
+&lt;p&gt;Sooo, finally I nudged myself and put it in a gem. Ladies and Gentlemen, here is &lt;a href=&#34;https://github.com/c0ze/emblaze&#34;&gt;Emblaze&lt;/a&gt; !
+It&amp;rsquo;s basically a rake task to minify &amp;amp; gzip &amp;amp; and upload a static site to S3.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Golang Gotchas</title>
-      <link>https://blog.coze.org/blog/2016-02-26-golang-gotchas/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2016-02-26-golang-gotchas/</link>
       <pubDate>Fri, 26 Feb 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2016-02-26-golang-gotchas/</guid>
-      <description>I&amp;rsquo;ve been playing around with golang lately, and got to know its intricacies better. At first, I have to admit I was not very enthusiastic playing with it, but the more I got to know about it, the more I warmed to to its concepts. And I observed it has matured pretty well from version 1.1 when I first started to play with it to version 1.4 and 1.5 when I first got do to something useful using Go.</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2016-02-26-golang-gotchas/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been playing around with golang lately, and got to know its intricacies better.
+At first, I have to admit I was not very enthusiastic playing with it, but the more I got to know about it, the more I warmed to to its concepts.
+And I observed it has matured pretty well from version 1.1 when I first started to play with it to version 1.4 and 1.5 when I first got do to something useful using Go.
+Here I will summarise my Gotchas.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Eddystone vs iBeacon</title>
-      <link>https://blog.coze.org/blog/2015-10-30-eddystone-vs-ibeacon/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2015-10-30-eddystone-vs-ibeacon/</link>
       <pubDate>Fri, 30 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2015-10-30-eddystone-vs-ibeacon/</guid>
-      <description>If you are interested in IoT, you&amp;rsquo;ve probably heard of Estimote. They are probably the leading beacon provider in the IoT field and that&amp;rsquo;s for a good reason. We&amp;rsquo;ve had their dev kit for a while, and had since been using them happily ever since. Their beacons quality is top notch, software frequently updated, and customer service usually responsive.
-As of recently, Estimote annouced support for Google&amp;rsquo;s Eddystone protocol, a beacon broadcast protocol which is a competitor to iBeacon from Apple.</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2015-10-30-eddystone-vs-ibeacon/</guid>
+      <description>&lt;p&gt;If you are interested in IoT, you&amp;rsquo;ve probably heard of Estimote. They are probably the leading beacon
+provider in the IoT field and that&amp;rsquo;s for a good reason. We&amp;rsquo;ve had &lt;a href=&#34;http://estimote.com/#jump-to-products&#34;&gt;their dev kit&lt;/a&gt; for a while,
+and had since been using them happily ever since. Their beacons quality is top notch, software frequently
+updated, and customer service usually responsive.&lt;/p&gt;
+&lt;p&gt;As of recently, &lt;a href=&#34;http://blog.estimote.com/post/124002171455/estimote-brings-full-compatibility-of-new&#34;&gt;Estimote annouced support&lt;/a&gt;
+for &lt;a href=&#34;https://github.com/google/eddystone&#34;&gt;Google&amp;rsquo;s Eddystone protocol&lt;/a&gt;, a
+beacon broadcast protocol which is a competitor to &lt;a href=&#34;https://developer.apple.com/ibeacon/&#34;&gt;iBeacon from Apple&lt;/a&gt;. I will admit that
+I am a pretty much hopeless Google fanboy, since their products tend to give end users more freedom. But this time, we had a
+much better, concrete reason to jump ship from iBeacon to Eddystone, &lt;em&gt;fleet management&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Our Gitlab CI setup</title>
-      <link>https://blog.coze.org/blog/2015-10-03-using-s3-as-a-deb-repository/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2015-10-03-using-s3-as-a-deb-repository/</link>
       <pubDate>Sat, 03 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2015-10-03-using-s3-as-a-deb-repository/</guid>
-      <description>We&amp;rsquo;re fervent supporters of Gitlab in our company, and when they rolled out a new CI module, we immediately jumped in to see how we can use it. In the past I&amp;rsquo;ve had experience with Jenkins, and a little bit with Travis. The Gitlab CI module is kind of based on Travis which is cool. It&amp;rsquo;s rather new so I had my doubts about it initially, but fortunately it turned out pretty good.</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2015-10-03-using-s3-as-a-deb-repository/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;re fervent supporters of Gitlab in our company, and &lt;a href=&#34;https://about.gitlab.com/2015/09/22/gitlab-8-0-released/&#34;&gt;when they rolled out a new CI module&lt;/a&gt;, we immediately jumped in to see how
+we can use it. In the past I&amp;rsquo;ve had experience with Jenkins, and a little bit with Travis. The Gitlab CI module is kind of based on Travis which is cool.
+It&amp;rsquo;s rather new so I had my doubts about it initially, but fortunately it turned out pretty good.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>first post baby</title>
-      <link>https://blog.coze.org/blog/2013-04-06-first-post-baby/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2013-04-06-first-post-baby/</link>
       <pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2013-04-06-first-post-baby/</guid>
-      <description>Testing the waters &amp;hellip;</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2013-04-06-first-post-baby/</guid>
+      <description>&lt;p&gt;Testing the waters &amp;hellip;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>just deployed to s3 ! Yay !</title>
-      <link>https://blog.coze.org/blog/2013-04-06-just-deployed-to-s3-yay/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2013-04-06-just-deployed-to-s3-yay/</link>
       <pubDate>Sat, 06 Apr 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2013-04-06-just-deployed-to-s3-yay/</guid>
-      <description>Hello from s3 ! After some twidling with the marvelous Octopress, I was able to deploy my blog to Amazon s3 ! HUZZAH !! No more messing around with servers/dbs, no need to worry about server load/downtime, long live static blogging !
-AWESOME</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2013-04-06-just-deployed-to-s3-yay/</guid>
+      <description>&lt;h1 id=&#34;hello-from-s3-&#34;&gt;Hello from s3 !&lt;/h1&gt;
+&lt;p&gt;After some twidling with the marvelous &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt;, I was able to deploy my blog to Amazon s3 !
+&lt;strong&gt;HUZZAH !!&lt;/strong&gt; No more messing around with servers/dbs, no need to worry about server load/downtime, long live static blogging !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AWESOME&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

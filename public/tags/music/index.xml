@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>music on CoZe&#39;s Blog</title>
-    <link>https://blog.coze.org/tags/music/</link>
-    <description>Recent content in music on CoZe&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Music on CoZe&#39;s Blog</title>
+    <link>http://localhost:1313/blog.coze.org/tags/music/</link>
+    <description>Recent content in Music on CoZe&#39;s Blog</description>
+    <generator>Hugo -- 0.147.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Jun 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.coze.org/tags/music/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jun 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog.coze.org/tags/music/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AC Chee Z !</title>
-      <link>https://blog.coze.org/blog/2013-06-01-ac-chee-z/</link>
+      <link>http://localhost:1313/blog.coze.org/blog/2013-06-01-ac-chee-z/</link>
       <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.coze.org/blog/2013-06-01-ac-chee-z/</guid>
-      <description>Recently I joined a AC/DC tribute band, to pay homage to the legends. Last night was our first gig, I was little bit concerned, cause we didnt have enough practice. But it turned out really well. Great fun !
-Kudos to Tokyo Underground legend Andy Mc Kinlay from the Kinlay Band for making this possible !</description>
+      <guid>http://localhost:1313/blog.coze.org/blog/2013-06-01-ac-chee-z/</guid>
+      <description>&lt;p&gt;Recently I joined a AC/DC tribute band, to pay homage to the legends. Last night was our first gig, I was little bit concerned, cause we didnt have enough practice. But it turned out really well. Great fun !&lt;/p&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/HeDAmssoHP0?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;Kudos to Tokyo Underground legend Andy Mc Kinlay from the &lt;a href=&#34;http://kinlayband.com/&#34;&gt;Kinlay Band&lt;/a&gt; for making this possible !&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
